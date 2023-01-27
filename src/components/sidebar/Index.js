@@ -5,7 +5,7 @@ import Loading from '../../helpers/Loading';
 
 const  SideBar = ()=> {
 
-  const cardList = useSelector(state => state.card);
+  const cardList = useSelector(state => state.card?.cardItems);
   const [cardAll,SetCardAll] = useState([])
   
 

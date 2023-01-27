@@ -28,6 +28,4 @@ const Card = ({dataCard}) => {
     )
 }
 
-// chart:'mostPopular'
-
 export default Card;
