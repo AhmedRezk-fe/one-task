@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import "./App.scss";
+import Filter from "./components/filter/Filter";
+import NavBar from "./components/navbar/Index";
+import SideBar from "./components/sidebar/Index";
+import requestResult from "./shares/agent";
+import { useLocation  } from "react-router-dom";
+import {startApp} from "./Redux/action";
+import { useDispatch } from "react-redux";
 
 function App() {
+  const location  = useLocation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(requestResult(startApp , location.search.split("=")[1])); 
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar />
+      <Filter />
+      <SideBar />
     </div>
   );
 }
